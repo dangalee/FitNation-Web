@@ -1,3 +1,8 @@
+# FitNation
+운동 프로그램을 제공하고, 고객 별로 운동량을 트래킹하며 관리해주는 웹사이트입니다. 
+고객, 트레이너, 그리고 관리자 역할이 존재합니다.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
