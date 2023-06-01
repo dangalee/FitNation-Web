@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-//메인 자바스크립트 관리가 가능합니다.
+//App js를 통해 메인 자바스크립트 관리가 가능합니다.
 
 function App() {
   return (
