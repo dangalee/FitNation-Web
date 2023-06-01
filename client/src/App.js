@@ -26,31 +26,52 @@ import TableHead from '@mui/material/TableHead';
 //     minWidth: 1080
 //   }
 // })
-const customer = [{
-  'id' : 1,
-  'name': '홍길동',
-  'image': 'https://placeimg.com/64/64/1',
-  'birthday': '880222',
-  'job': '학생'
-},
-{
-  'id' : 2,
-  'name': '이순신',
-  'image': 'https://placeimg.com/64/64/2',
-  'birthday': '880222',
-  'job': '학생'
-},
-{
-  'id' : 3,
-  'name': '대조영',
-  'image': 'https://placeimg.com/64/64/3',
-  'birthday': '880222',
-  'job': '학생'
-}
-]
+
+//하드코딩 comment out
+// const customer = [{
+//   'id' : 1,
+//   'name': '홍길동',
+//   'image': 'https://placeimg.com/64/64/1',
+//   'birthday': '880222',
+//   'job': '학생'
+// },
+// {
+//   'id' : 2,
+//   'name': '이순신',
+//   'image': 'https://placeimg.com/64/64/2',
+//   'birthday': '880222',
+//   'job': '학생'
+// },
+// {
+//   'id' : 3,
+//   'name': '대조영',
+//   'image': 'https://placeimg.com/64/64/3',
+//   'birthday': '880222',
+//   'job': '학생'
+// }
+// ]
 //map 함수를 활용하여 반복, 코드 길이를 줄일 수 있다. key를 사용해야 합니다.
 //f12를 눌러서 크롬 브라우저에서 에러 확인 가능
+
+
 class App extends Component {
+
+  state = {
+    //component 내에서 변경 가능
+    customers : []
+  }
+  componentDidMount() {
+    this.callApi()
+    .then(res => this.setState({customers:res}))
+    .catch(err => console.log(err));
+  
+  }
+  //비동기적으로 업무 수행
+  callApi = async () => {
+    const response = await fetch('api/customers'); //api에서 데이터를 받아와서
+    const body = await response.json(); //고객 목록이 json형태로 body변수에 들어감
+    return body;//body반환하여, componentdidmount함수에 전달
+  }
   render(){
     // const {classes} = this.props;
    return (
@@ -67,7 +88,7 @@ class App extends Component {
             </TableRow>
           </TableHead>
         <TableBody>
-          {customer.map(c => 
+          {this.state.customers ? this.state.customers.map(c =>
             {return( 
               <Customer 
                 key = {c.id}
@@ -77,7 +98,7 @@ class App extends Component {
                 birthday = {c.birthday}
                 job = {c.job}
                 />
-             )})}
+            )} ) : ""}
   
         </TableBody>
 
