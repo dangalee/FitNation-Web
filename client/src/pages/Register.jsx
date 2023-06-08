@@ -1,18 +1,43 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 
 
 function Register(){
 
+    const register = () => {
+        axios.post('/api/register/', {
+            //키 값 보내기
+            role: role,
+            name: name,
+            username: userName,
+            email: email,
+            password: confirmedPw,
+
+        })
+        .then((response) => {
+            console.log("성공입니다.", response.data);
+            alert('회원가입이 완료되었습니다.')
+            
+        })
+        .catch((error) => {
+            console.log("에러가 발생했습니다", error.response);
+            alert('회원가입 실패: 중복된 이메일입니다.')
+        })
+
+    }
+
     const completeRes = () => {
-        alert('회원가입이 완료되었습니다.')
+        register()
+        
         navigate('/')
+        
       }
     
     const navigate = useNavigate()
-    const[role, setRole] = useState('')
+    const[role, setRole] = useState('고객')
     const[name, setName] = useState('')
     const[email, setEmail] = useState('')
     const[userName, setUserName] = useState('')
@@ -58,18 +83,9 @@ function Register(){
     }
 
 
-    // const handlePw = (e) => {
-    //     setPw(e.target.value);
 
-    //     if (pw.length < 8) {
-    //         setPwValid(false)
-    //     }
-    //     else {
-    //         setPwValid(true)
-    //     }
-    // }
     //confirmedPWValid를 useEffect 적용시 회원가입 버튼 활성화가 안되는 에러가 발생
-    //한번 더 입력해야 아래 handleconfirmedpw가 발생
+    //한번 더 입력해야 아래 handleconfirmedpw가 발생, handlepw도 마찬가지라 일단 직접 useEffect구문 안에서 해결하는 방식으로 함
     // const handleConfirmedPw = (e) => {
     //     setConfirmedPw(e.target.value);
 

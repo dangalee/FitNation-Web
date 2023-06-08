@@ -1,10 +1,35 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
-
+import axios from 'axios'
 
 //아래는 로그인 컴포넌트입니다.
 function Login() {
+
+    const login = () => {
+        axios.post('/api/login/', {
+            //키 값 보내기
+            email: email,
+            password: pw,
+
+        })
+        .then((response) => {
+            console.log("성공입니다.", response.data);
+            alert('로그인 성공!')
+            
+        })
+        .catch((error) => {
+            console.log("에러가 발생했습니다", error.response);
+            alert('로그인 실패!')
+        })
+    }
+ 
+    const completeLogin = () => {
+        console.log("들어옴")
+        login()
+
+      }
+
     const [email, setEmail] = useState(''); //첫번째 state 생성 for email
     const [pw, setPw] = useState(''); //두번째 state 생성 for password
 
@@ -67,7 +92,7 @@ function Login() {
             </div>
 
             <div>
-                <button style = {{marginTop: "26px"}} disabled = {notAllow} className = "bottomButton">
+                <button style = {{marginTop: "26px"}} disabled = {notAllow} className = "bottomButton" onClick = {completeLogin}>
                     로그인
                 </button>
 
