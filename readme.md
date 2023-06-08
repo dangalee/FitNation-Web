@@ -3,7 +3,7 @@
 
 react.js, node.js 그리고 mongodb를 기반으로 개발 중입니다.
 
-현재 회원가입/로그인 기능을 스스로 완성하였습니다.\
+현재 회원가입/로그인 기능을 스스로 완성하였습니다.
 
 :arrow_forward: **프로젝트를 진행하며 공부한 내용을 기록 중입니다.**\
 [서버호스팅, react.js, node.js, mongodb](https://dangalee.github.io/2023-06-07-project-basics/)\
