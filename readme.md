@@ -1,5 +1,5 @@
 # FitNation-Web
-3명의 팀원들과 함께 한 FitNation 운동 관리 웹페이지 [FitNation-origin](https://github.com/dangalee/FitNation-origin) 를 현재 재구축 중에 있습니다.
+2022년 가을 3명의 팀원들과 함께 한 FitNation 운동 관리 웹페이지 [FitNation-origin](https://github.com/dangalee/FitNation-origin) 를 현재 재구축 중에 있습니다.
 
 react.js, node.js 그리고 mongodb를 기반으로 개발 중입니다.
 
